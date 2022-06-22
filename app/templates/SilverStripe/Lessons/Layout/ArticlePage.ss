@@ -11,7 +11,7 @@
 				<h1 class="blog-title">$Title</h1>
 				
 				<div class="blog-main-image">
-					<% with $Photo.ScaleWidth(750) %>
+					<% with $Photo.ScaleWidth(100) %>
 					    <img class="my-custom-class" src="$URL" alt="" width="$Width" height="$Height" />
 				    <% end_with %>
 					<div class="tag"><i class="fa fa-file-text"></i></div>

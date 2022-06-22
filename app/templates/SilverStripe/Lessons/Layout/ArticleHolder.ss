@@ -1,10 +1,4 @@
-	<!-- BEGIN HEADER -->
-		<header id="header">
-			<% include TopBar %>
-			
-			<% include MainNav %>
-		</header>
-		<!-- END HEADER -->
+
 
 <div class="parallax colored-bg pattern-bg" data-stellar-background-ratio="0.5">
 	<div class="container">
@@ -40,7 +34,7 @@
 								<a href="blog-detail.html">
 									<span class="btn btn-default">Read More</span>
 								</a>
-								 $Photo.Fit(242,156)	
+								 $Photo.Fit(100,100)	
 							</div>
 							<div class="tag"><i class="fa fa-file-text"></i></div>
 							<div class="info-blog">
