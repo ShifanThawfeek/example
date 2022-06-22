@@ -11,7 +11,9 @@
 				<h1 class="blog-title">$Title</h1>
 				
 				<div class="blog-main-image">
-					<img src="http://placehold.it/765x362" alt="" />
+					<% with $Photo.ScaleWidth(750) %>
+					    <img class="my-custom-class" src="$URL" alt="" width="$Width" height="$Height" />
+				    <% end_with %>
 					<div class="tag"><i class="fa fa-file-text"></i></div>
 				</div>
 				
@@ -28,8 +30,20 @@
 				<div class="post-content">
                     $Content
 				</div>
+
 				
-				<div class="share-wraper col-sm-12 clearfix">
+					<div class="share-wraper col-sm-12 clearfix">
+
+					<% if $Brochure %>
+						<div class="row">
+							<% with $Brochure %>
+								<div class="col-sm-12">
+									<a href="$URL" class="btn btn-success btn-block"><i class="fa fa-download"></i> Download brochure [$Extension] ($Size)</a>                  
+								</div>
+							<% end_with %>
+						</div>
+    				<% end_if %>
+						
 					<h5>Share this Post:</h5>
 					<ul class="social-networks">
 						<li><a target="_blank" href="http://www.facebook.com/sharer.php?s=100&amp;p%5Burl%5D=http%3A%2F%2Fwww.wiselythemes.com%2Fhtml%2Fcozy%2Fblog-detail.html%3Ffb%3Dtrue&amp;p%5Bimages%5D%5B0%5D=http%3A%2F%2Fwww.wiselythemes.com%2Fhtml%2Fcozy%2Fimages%2Fnews-img1.jpg&amp;p%5Btitle%5D=Cozy%20Blog%20Post"><i class="fa fa-facebook"></i></a></li>
@@ -43,6 +57,10 @@
 						<i class="fa fa-print"></i>
 					</a>
 				</div>
+
+				
+				  
+
 				
 				<h1 class="section-title">Comments</h1>
 				

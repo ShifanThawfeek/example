@@ -40,7 +40,7 @@
 								<a href="blog-detail.html">
 									<span class="btn btn-default">Read More</span>
 								</a>
-								<img src="http://placehold.it/766x515" alt="" />
+								 $Photo.Fit(242,156)	
 							</div>
 							<div class="tag"><i class="fa fa-file-text"></i></div>
 							<div class="info-blog">
