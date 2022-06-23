@@ -1,5 +1,4 @@
-		
-		<!-- BEGIN CONTENT WRAPPER -->
+	<!-- BEGIN CONTENT WRAPPER -->
 		<div class="content">
 			<div class="container">
 				<div class="row">
