@@ -9,7 +9,12 @@ use SilverStripe\Assets\Image;
 use SilverStripe\Assets\File;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Forms\CheckboxSetField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\EmailField;
 use Page;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\RequiredFields;
 
 class ArticlePage extends Page
 {
@@ -65,5 +70,37 @@ class ArticlePage extends Page
 
       return null;
   }
+
+  public function CommentForm()
+  {
+      $form = Form::create(
+          $this,
+          __FUNCTION__,
+          FieldList::create(
+              TextField::create('Name',''),
+              EmailField::create('Email',''),
+              TextareaField::create('Comment','')
+          ),
+          FieldList::create(
+              FormAction::create('handleComment','Post Comment')
+                  ->setUseButtonTag(true)
+                  ->addExtraClass('btn btn-default-color btn-lg')
+          ),
+          RequiredFields::create('Name','Email','Comment')
+      )
+      ->addExtraClass('form-style');
+  
+      foreach($form->Fields() as $field) {
+          $field->addExtraClass('form-control')
+                 ->setAttribute('placeholder', $field->getName().'*');            
+      }
+  
+      return $form;
+  }
+
+  private static $has_many = [
+    'Comments' => ArticleComment::class,
+  ];
+
 
 }
