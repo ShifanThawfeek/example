@@ -8,7 +8,8 @@
 	<meta charset="utf-8" />
 	
 	<!-- Page Title -->
-	$MetaTags
+	$MetaTags(false)
+	<title>One Ring Rentals: $Title</title>
 	
 	<!-- IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>

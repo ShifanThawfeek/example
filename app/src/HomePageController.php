@@ -2,15 +2,23 @@
 
 namespace SilverStripe\Lessons;
 
-use PageController;    
-// use SilverStripe\ORM\DataObject;
+use PageController;
 
-class HomePageController extends PageController 
+class HomePageController extends PageController
 {
-    public function LatestArticles($count = 2) 
-  { 
+  public function LatestArticles($count = 2)
+  {
     return ArticlePage::get()
-               ->sort('Created', 'DESC')
-               ->limit($count);
-  } 
+      ->sort('Created', 'DESC')
+      ->limit($count);
+  }
+
+  public function FeaturedProperties()
+  {
+    return Property::get()
+      ->filter(array(
+        'FeaturedOnHomepage' => true
+      ))
+      ->limit(6);
+  }
 }

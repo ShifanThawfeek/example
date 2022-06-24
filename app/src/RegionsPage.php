@@ -12,6 +12,10 @@ class RegionsPage extends Page
         'Regions' => Region::class,
     ];
 
+    private static $owns = [
+        'Regions'
+    ]; 
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
@@ -25,7 +29,5 @@ class RegionsPage extends Page
         return $fields;
     }
 
-    private static $owns = [
-        'Regions'
-    ];    
+      
 }
