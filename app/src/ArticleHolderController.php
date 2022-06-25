@@ -4,6 +4,7 @@ namespace SilverStripe\Lessons;
 
 use PageController;
 use SilverStripe\Control\HTTPRequest;
+use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\PaginatedList;
 
 class ArticleHolderController extends PageController
@@ -16,7 +17,7 @@ class ArticleHolderController extends PageController
 
     protected $articleList;
 
-    protected function init ()
+    protected function init()
     {
         parent::init();
 
@@ -25,22 +26,22 @@ class ArticleHolderController extends PageController
         ])->sort('Date DESC');
     }
 
-    public function PaginatedArticles ($num = 10)
-    {       
+    public function PaginatedArticles($num = 10)
+    {
         return PaginatedList::create(
             $this->articleList,
             $this->getRequest()
         )->setPageLength($num);
     }
 
-    public function category (HTTPRequest $r)
+    public function category(HTTPRequest $r)
     {
         $category = ArticleCategory::get()->byID(
             $r->param('ID')
         );
 
-        if(!$category) {
-            return $this->httpError(404,'That category was not found');
+        if (!$category) {
+            return $this->httpError(404, 'That category was not found');
         }
 
         $this->articleList = $this->articleList->filter([
@@ -52,14 +53,14 @@ class ArticleHolderController extends PageController
         ];
     }
 
-    public function region (HTTPRequest $r)
+    public function region(HTTPRequest $r)
     {
         $region = Region::get()->byID(
             $r->param('ID')
         );
 
-        if(!$region) {
-            return $this->httpError(404,'That region was not found');
+        if (!$region) {
+            return $this->httpError(404, 'That region was not found');
         }
 
         $this->articleList = $this->articleList->filter([
@@ -69,5 +70,66 @@ class ArticleHolderController extends PageController
         return [
             'SelectedRegion' => $region
         ];
+    }
+
+    // public function date(HTTPRequest $r)
+    // {
+    //     $year = $r->param('ID');
+    //     $month = $r->param('OtherID');
+
+    //     if (!$year) return $this->httpError(404);
+
+    //     $startDate = $month ? "{$year}-{$month}-01" : "{$year}-01-01";
+
+    //     if (strtotime($startDate) === false) {
+    //         return $this->httpError(404, 'Invalid date');
+    //     }
+
+    //     $adder = $month ? '+1 month' : '+1 year';
+    //     $endDate = date('Y-m-d', strtotime(
+    //         $adder, 
+    //             strtotime($startDate)
+    //     ));
+
+    //     $this->articleList = $this->articleList->filter([
+    //         'Date:GreaterThanOrEqual' => $startDate,
+    //         'Date:LessThan' => $endDate 
+    //     ]);
+
+    //     return [
+    //         'StartDate' => DBField::create_field('Datetime', $startDate),
+    //         'EndDate' => DBField::create_field('Datetime', $endDate)
+    //     ];
+    // }
+
+    public function date(HTTPRequest $r)
+    {
+        $year = $r->param('ID');
+        $month = $r->param('OtherID');
+
+        if (!$year) return $this->httpError(404);
+
+        $startDate = $month ? "{$year}-{$month}-01" : "{$year}-01-01";
+
+        if (strtotime($startDate) === false) {
+            return $this->httpError(404, 'Invalid date');
+        }
+
+        $adder = $month ? '+1 month' : '+1 year';
+        $endDate = date('Y-m-d', strtotime(
+            $adder, 
+                strtotime($startDate)
+        ));
+
+        $this->articleList = $this->articleList->filter([
+            'Date:GreaterThanOrEqual' => $startDate,
+            'Date:LessThan' => $endDate 
+        ]);
+
+        return [
+            'StartDate' => DBField::create_field('Datetime', $startDate),
+            'EndDate' => DBField::create_field('Datetime', $endDate)
+        ];
+
     }
 }

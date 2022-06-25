@@ -24,11 +24,12 @@
 			<div class="main col-sm-8">
 				<div id="blog-listing" class="list-style clearfix">
 					<div class="row">
-
 						<% if $SelectedRegion %>
 							<h3>Region: $SelectedRegion.Title</h3>
 						<% else_if $SelectedCategory %>
 							<h3>Category: $SelectedCategory.Title</h3>
+							<% else_if $StartDate %>
+								<h3>Showing $StartDate.Date to $EndDate.Date</h3>
 						<% end_if %>
 						
 					  <% loop $PaginatedArticles %>
@@ -42,7 +43,7 @@
 							<div class="tag"><i class="fa fa-file-text"></i></div>
 							<div class="info-blog">
 								<ul class="top-info">
-									<li><i class="fa fa-calendar"></i> $Date.Long</li>
+									<li><i class="fa fa-calendar"></i> $Date.Nice</li>
 									<li><i class="fa fa-comments-o"></i> 2</li>
 									<li><i class="fa fa-tags"></i> $CategoriesList</li>
 								</ul>
@@ -57,89 +58,8 @@
 							</div>
 						</div>
 						 <% end_loop %>
-						
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-						<div class="item col-md-6"><!-- Set width to 4 columns for grid view mode only -->
-							<div class="image">
-								<a href="blog-detail.html">
-									<span class="btn btn-default">Read More</span>
-								</a>
-								<img src="http://placehold.it/766x515" alt="" />
-							</div>
-							<div class="tag"><i class="fa fa-file-text"></i></div>
-							<div class="info-blog">
-								<ul class="top-info">
-									<li><i class="fa fa-calendar"></i> July 30, 2014</li>
-									<li><i class="fa fa-comments-o"></i> 2</li>
-									<li><i class="fa fa-tags"></i> Properties, Prices, best deals</li>
-								</ul>
-								<h3>
-									<a href="blog-detail.html">How to get your dream property for the best price?</a>
-								</h3>
-								<p>Sed rutrum urna id tellus euismod gravida. Praesent placerat, mauris ac pellentesque fringilla, tortor libero condimen. Aliquam fermem tum nulla felis, sed molestie libero porttitor in.</p>
-							</div>
-						</div>
-
-						<div class="item col-md-6"><!-- Set width to 4 columns for grid view mode only -->
-							<div class="image">
-								<a href="blog-detail.html">
-									<span class="btn btn-default">Read More</span>
-								</a>
-								<img src="http://placehold.it/766x515" alt="" />
-							</div>
-							<div class="tag"><i class="fa fa-file-text"></i></div>
-							<div class="info-blog">
-								<ul class="top-info">
-									<li><i class="fa fa-calendar"></i> July 30, 2014</li>
-									<li><i class="fa fa-comments-o"></i> 2</li>
-									<li><i class="fa fa-tags"></i> Properties, Prices, best deals</li>
-								</ul>
-								<h3>
-									<a href="blog-detail.html">How to get your dream property for the best price?</a>
-								</h3>
-								<p>Sed rutrum urna id tellus euismod gravida. Praesent placerat, mauris ac pellentesque fringilla, tortor libero condimen. Aliquam fermem tum nulla felis, sed molestie libero porttitor in.</p>
-							</div>
-						</div>
-						<div class="item col-md-6"><!-- Set width to 4 columns for grid view mode only -->
-							<div class="image">
-								<a href="blog-detail.html">
-									<span class="btn btn-default">Read More</span>
-								</a>
-								<img src="http://placehold.it/766x515" alt="" />
-							</div>
-							<div class="tag"><i class="fa fa-file-text"></i></div>
-							<div class="info-blog">
-								<ul class="top-info">
-									<li><i class="fa fa-calendar"></i> July 30, 2014</li>
-									<li><i class="fa fa-comments-o"></i> 2</li>
-									<li><i class="fa fa-tags"></i> Properties, Prices, best deals</li>
-								</ul>
-								<h3>
-									<a href="blog-detail.html">$Title</a>
-								</h3>
-								<p>Sed rutrum urna id tellus euismod gravida. Praesent placerat, mauris ac pellentesque fringilla, tortor libero condimen. Aliquam fermem tum nulla felis, sed molestie libero porttitor in.</p>
-							</div>
-						</div>
-
-						
 					</div>
-					
 				</div>
-				
 				
 				<!-- BEGIN PAGINATION -->
 				<% if $PaginatedArticles.MoreThanOnePage %>
@@ -183,70 +103,30 @@
 				<% end_loop %>
 				</ul>
 				
-				<!-- BEGIN ARCHIVES ACCORDION -->
-				<h2 class="section-title">Archives</h2>
-				<div id="accordion" class="panel-group blog-accordion">
-					<div class="panel">
-						<div class="panel-heading">
-							<div class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="">
-									<i class="fa fa-chevron-right"></i> 2014 (15)
-								</a>
-							</div>
-						</div>
-						<div id="collapseOne" class="panel-collapse collapse in">
-							<div class="panel-body">
-								<ul>
-									<li><a href="#">July (3)</a></li>
-									<li><a href="#">June (4)</a></li>
-									<li><a href="#">May (1)</a></li>
-									<li><a href="#">April (2)</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					
-					<div class="panel">
-						<div class="panel-heading">
-							<div class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">
-									<i class="fa fa-chevron-right"></i> 2013 (6)
-								</a>
-							</div>
-						</div>
-						<div id="collapseTwo" class="panel-collapse collapse">
-							<div class="panel-body">
-								<ul>
-									<li><a href="#">May (1)</a></li>
-									<li><a href="#">April (2)</a></li>
-									<li><a href="#">March (1)</a></li>
-									<li><a href="#">February (2)</a></li>
-									<li><a href="#">January (1)</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					
-					<div class="panel">
-						<div class="panel-heading">
-							<div class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed">
-									<i class="fa fa-chevron-right"></i> 2012 (5)
-								</a>
-							</div>
-						</div>
-						<div id="collapseThree" class="panel-collapse collapse">
-							<div class="panel-body">
-								<ul>
-									<li><a href="#">April (1)</a></li>
-									<li><a href="#">March (1)</a></li>
-									<li><a href="#">February (2)</a></li>
-									<li><a href="#">January (1)</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
+				  <!-- BEGIN ARCHIVES ACCORDION -->
+				  <h2 class="section-title">Archives</h2>
+				  <div id="accordion" class="panel-group blog-accordion">
+					  <div class="panel">
+					  <!--
+						  <div class="panel-heading">
+							  <div class="panel-title">
+								  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="">
+									  <i class="fa fa-chevron-right"></i> 2014 (15)
+								  </a>
+							  </div>
+						  </div>
+					  -->
+						  <div id="collapseOne" class="panel-collapse collapse in">
+							  <div class="panel-body">
+								  <ul>
+								  <% loop $ArchiveDates %>
+									  <li><a href="$Link">$MonthName $Year ($ArticleCount)</a></li>
+								  <% end_loop %>
+								  </ul>
+							  </div>
+						  </div>
+					  </div>  
+				  </div>
 				<!-- END  ARCHIVES ACCORDION -->
 				
 				
