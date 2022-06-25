@@ -5,7 +5,7 @@
         <div class="row">
 
             <!-- BEGIN MAIN CONTENT -->
-            <div class="main col-sm-8">
+            <div class="main col-sm-7">
 
                 <div id="listing-header" class="clearfix">
                     <div class="form-control-small">
@@ -98,18 +98,21 @@
 
 
             <!-- BEGIN SIDEBAR -->
-            <div class="sidebar gray col-sm-4">
+            <div class="gray col-sm-5">
 
                 <!-- BEGIN ADVANCED SEARCH -->
                 <h2 class="section-title">Search Property</h2>
                 <div class="chzn-container-multi">
                     <ul class="chzn-choices">
-                        <li class="search-choice"><span>New York</span><a href="#" class="search-choice-close"></a></li>
-                        <li class="search-choice"><span>Residential</span><a href="#" class="search-choice-close"></a></li>
-                        <li class="search-choice"><span>3 bedrooms</span><a href="#" class="search-choice-close"></a></li>
-                        <li class="search-choice"><span>2 bathrooms</span><a href="#" class="search-choice-close"></a></li>
-                        <li class="search-choice"><span>Min. $150</span><a href="#" class="search-choice-close"></a></li>
-                        <li class="search-choice"><span>Min. $400</span><a href="#" class="search-choice-close"></a></li>
+                        <% if $ActiveFilters %>
+                            <div class="chzn-container-multi">
+                              <ul class="chzn-choices">
+                                 <% loop $ActiveFilters %>
+                                    <li class="search-choice"><span>$Label</span><a href="$RemoveLink" class="search-choice-close"></a></li>
+                                 <% end_loop %>
+                              </ul>
+                            </div>
+                            <% end_if %>
                     </ul>
                 </div>
                 $PropertySearchForm
