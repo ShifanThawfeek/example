@@ -49,7 +49,8 @@ class ArticlePage extends Page
 
     private static $has_one = [
         'Photo' => Image::class,
-        'Brochure' => File::class
+        'Brochure' => File::class,
+        'Region' => Region::class,
     ];
 
 

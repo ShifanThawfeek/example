@@ -73,4 +73,17 @@ class Region extends DataObject
     {
         return Controller::curr()->getRequest()->param('ID') == $this->ID ? 'current' : 'link';
     }
+
+    private static $has_many = [
+        'Articles' => ArticlePage::class,
+    ];
+
+    public function ArticlesLink()
+    {
+        $page = ArticleHolder::get()->first();
+
+        if($page) {
+            return $page->Link('region/'.$this->ID);
+        }
+    }
 }
